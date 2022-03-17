@@ -4,10 +4,13 @@ import cors from 'cors'
 import todoRoutes from './routes'
 
 const app: Express = express()
+const bp = require('body-parser')
 
 const PORT: string | number = process.env.PORT || 4000
 
 app.use(cors())
+app.use(bp.json())
+app.use(bp.urlencoded({ extended: true }))
 app.use(todoRoutes)
 
 const uri: string = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_URL}/${process.env.MONGO_DB}?retryWrites=true&w=majority`
