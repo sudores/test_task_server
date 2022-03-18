@@ -1,7 +1,9 @@
 pipeline {
     agent any
     environment {
-        COMMIT = ""
+        USER         = "vepl"
+        IMAGE_NAME   = "test-task-client"
+        COMMIT       = ""
     }
     stages {
         stage("Need") {
@@ -9,10 +11,21 @@ pipeline {
                 script {
                     echo 'environment is done, need is runing'
                     env.COMMIT = getStartedCommit()
+                    echo "USER $USER"
+                    echo "IMAGE_NAME $IMAGE_NAME"
                     echo "COMMIT $COMMIT"
                 }
             }
         }
+        stage("Build") {
+            steps {
+                script {
+                    def img = docker.build("$USER/$IMAGE_NAME:$COMMIT", ".")
+                    img.push()
+                }
+           } 
+        }
+
     }
 }
 
