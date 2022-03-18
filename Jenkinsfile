@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     echo 'environment is done, need is runing'
-                    env.COMMIT = getStartedCommit()
+                    COMMIT = getStartedCommit()
                     echo "COMMIT $COMMIT"
                 }
             }
