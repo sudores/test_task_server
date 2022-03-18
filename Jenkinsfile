@@ -16,7 +16,7 @@ pipeline {
 String getStartedCommit() {
     String result = sh(
             returnStdout: true,
-            script: "git log --pretty=format:'%h'"
+            script: "git log -1 --pretty=format:'%h'"
             ).trim()
     return result
 }
