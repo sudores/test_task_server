@@ -1,15 +1,22 @@
 pipeline {
     agent any
     stages {
-        stage("Test") {
+        stage("Build") {
             steps {
-                sh 'node -v'
-                sh 'npm -v'
-                sh 'yarn -v'
-                sh 'yarn install'
-                sh 'yarn test'
+                script {
+                    a = getStartedCommit()
+                    echo "$a"
+                }
             }
         }
     }
 
+}
+
+String getStartedCommit() {
+    String result = sh(
+            returnStdout: true,
+            script: "git log --pretty=format:'%h'"
+            ).trim()
+    return result
 }
