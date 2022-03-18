@@ -13,7 +13,6 @@ pipeline {
                 echo "IMAGE_NAME $IMAGE_NAME"
                 script {
                     env.COMMIT = getStartedCommit()
-                    echo "COMMIT $COMMIT"
                 }
                 echo "COMMIT $COMMIT"
             }
