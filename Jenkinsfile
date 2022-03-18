@@ -18,6 +18,12 @@ pipeline {
             }
         }
         stage("Build") {
+            when {
+                anyOf {
+                    branch "master";
+                    branch "dev";
+                }
+            }
             steps {
                 script {
                     img = docker.build("$USER/$IMAGE_NAME:$COMMIT", ".")
@@ -25,6 +31,12 @@ pipeline {
            } 
         }
         stage("Deploy") {
+            when {
+                anyOf {
+                    branch "master";
+                    branch "dev";
+                }
+            }
             steps {
                 script {
                     img.push()
