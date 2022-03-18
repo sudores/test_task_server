@@ -3,8 +3,7 @@ pipeline {
     environment {
         USER         = "vepl"
         IMAGE_NAME   = "test-task-client"
-        COMMIT       = "test"
-        IMAGE_TAG    = "test"
+        COMMIT       = ""
     }
     stages {
         stage("Need") {
@@ -13,10 +12,9 @@ pipeline {
                 echo "USER $USER"
                 echo "IMAGE_NAME $IMAGE_NAME"
                 echo "COMMIT $COMMIT"
-                echo "TAG $IMAGE_TAG"
                 script {
                     env.COMMIT = getStartedCommit()
-                    echo "$COMMIT"
+                    echo "COMMIT $COMMIT"
                 }
             }
         }
