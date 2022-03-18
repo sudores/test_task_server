@@ -22,8 +22,7 @@ pipeline {
                 script {
                     img = docker.build("$USER/$IMAGE_NAME:$COMMIT", ".")
                     img.push()
-                    img.tag("latest")
-                    img.push()
+                    img.push("latest")
                 }
            } 
         }
