@@ -13,6 +13,11 @@ pipeline {
                 }
             }
         }
+        stage("BUILD") {
+            steps {
+                echo "COMMIT $COMMIT"
+            }
+        }
     }
 }
 
