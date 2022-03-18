@@ -8,13 +8,11 @@ pipeline {
     stages {
         stage("Need") {
             steps {
-                script {
-                    echo 'environment is done, need is runing'
-                    COMMIT = getStartedCommit()
-                    echo "USER $USER"
-                    echo "IMAGE_NAME $IMAGE_NAME"
-                    echo "COMMIT $COMMIT"
-                }
+                echo 'environment is done, need is runing'
+                COMMIT = getStartedCommit()
+                echo "USER $USER"
+                echo "IMAGE_NAME $IMAGE_NAME"
+                echo "COMMIT $COMMIT"
             }
         }
         stage("Build") {
