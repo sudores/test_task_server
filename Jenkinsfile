@@ -11,11 +11,11 @@ pipeline {
                 echo 'environment is done, need is runing'
                 echo "USER $USER"
                 echo "IMAGE_NAME $IMAGE_NAME"
-                echo "COMMIT $COMMIT"
                 script {
                     env.COMMIT = getStartedCommit()
                     echo "COMMIT $COMMIT"
                 }
+                echo "COMMIT $COMMIT"
             }
         }
         stage("Build") {
