@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         USER         = "vepl"
-        IMAGE_NAME   = "test-task-client"
+        IMAGE_NAME   = "test-task-server"
         COMMIT       = ""
     }
     stages {
