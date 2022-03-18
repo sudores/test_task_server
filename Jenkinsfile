@@ -20,7 +20,9 @@ pipeline {
         stage("Build") {
             steps {
                 script {
-                    def img = docker.build("$USER/$IMAGE_NAME:$COMMIT", ".")
+                    img = docker.build("$USER/$IMAGE_NAME:$COMMIT", ".")
+                    img.push()
+                    img.tag("latest")
                     img.push()
                 }
            } 
